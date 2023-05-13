@@ -78,7 +78,11 @@ if [ "$OLD_IP" == "$CURRENT_IP" ]; then
     echo "IP address is unchanged. Update not required."
 else
 	echo "Updating dynv6 record with current public ip"
-	update=$(curl -sSL "http://ipv6.dynv6.com/api/update?hostname=$ZONE&ipv6=$CURRENT_IP&token=$API_KEY")
+	if [ "$RECOORD_TYPE" == "A" ]; then
+		update=$(curl -sSL "http://ipv4.dynv6.com/api/update?hostname=$ZONE&ipv4=$CURRENT_IP&token=$API_KEY")
+	else
+		update=$(curl -sSL "http://ipv6.dynv6.com/api/update?hostname=$ZONE&ipv6=$CURRENT_IP&token=$API_KEY")
+	fi
 
 	if [ "$update" == "addresses updated" ]; then
 		echo "DNS Record $RECORD_NAME IP updated to $CURRENT_IP"
