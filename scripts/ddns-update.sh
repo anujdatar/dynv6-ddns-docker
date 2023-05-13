@@ -72,7 +72,7 @@ echo "Current Public IP: $CURRENT_IP"
 # #####################################################################
 # Step 3: Update ddns
 # check registered ip against current public ip
-OLD_IP=$(cat old_record_ip)
+OLD_IP=$(cat /old_record_ip)
 echo "Stored IP address $OLD_IP"
 if [ "$OLD_IP" == "$CURRENT_IP" ]; then
     echo "IP address is unchanged. Update not required."
@@ -82,7 +82,7 @@ else
 
 	if [ "$update" == "addresses updated" ]; then
 		echo "DNS Record $RECORD_NAME IP updated to $CURRENT_IP"
-		echo "$CURRENT_IP" > old_record_ip
+		echo "$CURRENT_IP" > /old_record_ip
 	else
 		echo "Error updating dynv6 DNS record $RECORD_NAME"
 		echo "$update"
