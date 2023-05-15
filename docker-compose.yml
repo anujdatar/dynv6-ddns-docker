@@ -1,0 +1,29 @@
+version: "3"
+services:
+  dynv6-ddns:
+    image: dynv6-test
+    container_name: dynv6-ddns
+    restart: unless-stopped
+    environment:
+      - API_KEY_FILE=/run/secrets/api_key
+      - ZONE_FILE=/run/secrets/zone
+      - RECORD_TYPE=AAAA
+      # - FREQUENCY=1
+    secrets:
+      - api_key
+      - zone
+
+networks:
+  default:
+    driver: bridge
+    enable_ipv6: true
+    ipam:
+      driver: default
+      config:
+        - subnet: fd00::/64
+
+secrets:
+  api_key:
+    file: dynv6-api-key.txt
+  zone:
+    file: dynv6-zone.txt
