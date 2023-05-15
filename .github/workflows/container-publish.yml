@@ -24,7 +24,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ${{ github.actor }}/dynv6-ddns
+          images: ghcr.io/${{ github.actor }}/dynv6-ddns
           tags: |
             type=raw,value={{date 'YY.MM.DD'}}
           flavor: |
