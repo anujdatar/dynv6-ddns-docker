@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-LABEL org.opencontainers.image.source https://github.com/anujdatar/dynv6-ddns-docker
+LABEL org.opencontainers.image.source="https://github.com/anujdatar/dynv6-ddns-docker"
 LABEL org.opencontainers.image.description="DynV6 DDNS Updater"
 LABEL org.opencontainers.image.author="Anuj Datar <anuj.datar@gmail.com>"
 LABEL org.opencontainers.image.url="https://github.com/anujdatar/dynv6-ddns-docker/blob/main/README.md"
