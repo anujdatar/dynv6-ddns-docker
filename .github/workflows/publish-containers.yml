@@ -9,7 +9,7 @@ on:
     - cron: "10 0 1 * *"
 
 jobs:
-  build:
+  build-for-ghcr:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
