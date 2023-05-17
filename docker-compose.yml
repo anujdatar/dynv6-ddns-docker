@@ -1,7 +1,7 @@
 version: "3"
 services:
   dynv6-ddns:
-    image: dynv6-test
+    image: ghcr.io/anujdatar/dynv6-ddns
     container_name: dynv6-ddns
     restart: unless-stopped
     environment:
