@@ -8,7 +8,7 @@ LABEL org.opencontainers.image.licenses=MIT
 
 # default env variables
 ENV FREQUENCY 5
-ENV RECORD_TYPE AAAA
+ENV RECORD_TYPE A
 
 # install dependencies
 RUN apk update && apk add --no-cache curl jq bind-tools
