@@ -11,7 +11,7 @@ ENV FREQUENCY 5
 ENV RECORD_TYPE A
 
 # install dependencies
-RUN apk update && apk add --no-cache curl jq bind-tools
+RUN apk update && apk add --no-cache tzdata curl bind-tools jq
 
 # copy scripts over
 COPY scripts /
