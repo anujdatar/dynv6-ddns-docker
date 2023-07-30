@@ -15,6 +15,6 @@ RUN apk update && apk add --no-cache tzdata curl bind-tools jq
 
 # copy scripts over
 COPY scripts /
-RUN chmod 700 /ddns-update.sh /entry.sh
+RUN chmod 700 /entry.sh /container-setup.sh /ddns-update.sh
 
 CMD ["/entry.sh"]
