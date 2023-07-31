@@ -3,8 +3,6 @@ name: Publish dynv6-DDNS container image
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
   schedule:
     - cron: "10 0 1 * *"
 
