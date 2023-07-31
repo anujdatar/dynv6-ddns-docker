@@ -33,7 +33,7 @@ if [ -f "$ZONE_FILE" ]; then
   ZONE=$(cat "$ZONE_FILE")
 fi
 if [ -z "$ZONE" ]; then
-  echo "Please enter valid ZONE env variable or add /secrets/zone file"
+  echo "Please enter valid ZONE env variable or ZONE_FILE secret"
   exit 1
 fi
 echo "Zone: $ZONE  ---  OK"
