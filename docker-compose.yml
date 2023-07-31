@@ -7,8 +7,9 @@ services:
     environment:
       - API_KEY_FILE=/run/secrets/api_key
       - ZONE_FILE=/run/secrets/zone
+      - TZ=America/New_York
       - RECORD_TYPE=AAAA
-      # - FREQUENCY=1
+      - FREQUENCY=1
     secrets:
       - api_key
       - zone
