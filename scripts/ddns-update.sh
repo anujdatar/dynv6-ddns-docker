@@ -32,33 +32,33 @@ get_ip6() {
 # #####################################################################
 # Step 1: Get current public IP address
 if [ "$RECORD_TYPE" == "A" ]; then
-	CURRENT_IP=$(get_ip4)
-	PROTO="ipv4"
+  CURRENT_IP=$(get_ip4)
+  PROTO="ipv4"
 elif [ "$RECORD_TYPE" == "AAAA" ]; then
-	CURRENT_IP=$(get_ip6)
-	PROTO="ipv6"
+  CURRENT_IP=$(get_ip6)
+  PROTO="ipv6"
 fi
 
 if [ -z $CURRENT_IP ]; then
-	echo "[$(date)]: Public IP not found, check internet connection"
-	exit 1
+  echo "[$(date)]: Public IP not found, check internet connection"
+  exit 1
 fi
 # #####################################################################
 # Step 2: Check against old IP
 OLD_IP=$(cat /old_record_ip)
 if [ "$OLD_IP" == "$CURRENT_IP" ]; then
   echo "[$(date)]: IP unchanged, not updating. IP: $CURRENT_IP"
-	exit 0
+  exit 0
 fi
 # #####################################################################
 # Step 3: Update ddns
 update=$(curl -sSL "http://${PROTO}.dynv6.com/api/update?zone=${ZONE}&${PROTO}=${CURRENT_IP}&token=${API_KEY}")
 
 if [ "$update" == "addresses updated" ]; then
-	echo "[$(date)]: DDNS update successful...   IP: $CURRENT_IP"
-	echo $CURRENT_IP > /old_record_ip
+  echo "[$(date)]: DDNS update successful...   IP: $CURRENT_IP"
+  echo $CURRENT_IP > /old_record_ip
 else
-	echo "[$(date)]: DDNS update failed...  Curr IP: $CURRENT_IP"
-	echo "$update"
+  echo "[$(date)]: DDNS update failed...  Curr IP: $CURRENT_IP"
+  echo "$update"
 fi
 # #####################################################################
